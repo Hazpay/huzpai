@@ -1,0 +1,259 @@
+<!DOCTYPE html>\r\n
+<html lang="ru">\r\n
+<head>\r\n
+    <meta charset="UTF-8">\r\n
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n
+    <meta name="description" content="HuzpAi - Решения в области искусственного интеллекта">\r\n
+    <meta name="keywords" content="HuzpAi, ИИ, нейронные сети, автоматизация">\r\n
+    <meta name="author" content="Grok, xAI">\r\n
+    <title>HuzpAi - Решения ИИ</title>\r\n
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">\r\n
+    <style>\r\n
+        * {\r\n
+            margin: 0;\r\n
+            padding: 0;\r\n
+            box-sizing: border-box;\r\n
+        }\r\n
+        body {\r\n
+            background-color: #0a0a0a;\r\n
+            color: #e0e0e0;\r\n
+            font-family: 'JetBrains Mono', monospace;\r\n
+            line-height: 1.6;\r\n
+            margin: 0;\r\n
+            padding: 20px;\r\n
+            max-width: 800px;\r\n
+            margin-left: auto;\r\n
+            margin-right: auto;\r\n
+        }\r\n
+        h1, h2, h3 {\r\n
+            color: #00ff88;\r\n
+            text-transform: uppercase;\r\n
+            letter-spacing: 2px;\r\n
+            border-bottom: 2px solid #00ff88;\r\n
+            padding-bottom: 5px;\r\n
+        }\r\n
+        h1 {\r\n
+            font-size: 1.8em;\r\n
+            text-align: center;\r\n
+        }\r\n
+        h2 {\r\n
+            font-size: 1.4em;\r\n
+            margin-top: 30px;\r\n
+        }\r\n
+        h3 {\r\n
+            font-size: 1.2em;\r\n
+            color: #00ccff;\r\n
+            border-bottom: 1px solid #00ccff;\r\n
+        }\r\n
+        p, li {\r\n
+            font-size: 1em;\r\n
+            color: #d0d0d0;\r\n
+        }\r\n
+        ul {\r\n
+            list-style: none;\r\n
+            padding-left: 20px;\r\n
+        }\r\n
+        ul li {\r\n
+            position: relative;\r\n
+            margin-bottom: 10px;\r\n
+        }\r\n
+        ul li:before {\r\n
+            content: ">>";\r\n
+            color: #ff0077;\r\n
+            position: absolute;\r\n
+            left: -20px;\r\n
+        }\r\n
+        a {\r\n
+            color: #00ff88;\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        a:hover {\r\n
+            text-decoration: underline;\r\n
+        }\r\n
+        .container {\r\n
+            background: #1a1a1a;\r\n
+            padding: 20px;\r\n
+            border-radius: 10px;\r\n
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);\r\n
+        }\r\n
+        nav {\r\n
+            display: flex;\r\n
+            justify-content: center;\r\n
+            gap: 2rem;\r\n
+            padding: 1rem;\r\n
+            background: #1a1a1a;\r\n
+            margin-bottom: 2rem;\r\n
+            border-radius: 8px;\r\n
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);\r\n
+        }\r\n
+        nav a {\r\n
+            color: #00ff88;\r\n
+            font-weight: 700;\r\n
+            font-size: 1.1em;\r\n
+            transition: color 0.3s ease, transform 0.2s ease;\r\n
+        }\r\n
+        nav a:hover {\r\n
+            color: #00ccff;\r\n
+            transform: scale(1.05);\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        .lead-magnets {\r\n
+            margin-top: 3rem;\r\n
+            display: flex;\r\n
+            flex-wrap: wrap;\r\n
+            gap: 2rem;\r\n
+            justify-content: center;\r\n
+        }\r\n
+        .lead-magnet-card {\r\n
+            background: #1a1a1a;\r\n
+            padding: 1.5rem;\r\n
+            border-radius: 10px;\r\n
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);\r\n
+            max-width: 300px;\r\n
+            text-align: center;\r\n
+            transition: transform 0.3s ease;\r\n
+        }\r\n
+        .lead-magnet-card:hover {\r\n
+            transform: translateY(-5px);\r\n
+        }\r\n
+        .lead-magnet-card h3 {\r\n
+            font-size: 1.1em;\r\n
+            margin-bottom: 1rem;\r\n
+        }\r\n
+        .lead-magnet-card p {\r\n
+            font-size: 0.9em;\r\n
+            margin-bottom: 1.5rem;\r\n
+        }\r\n
+        .btn {\r\n
+            display: inline-block;\r\n
+            padding: 0.8rem 1.5rem;\r\n
+            background: #00ff88;\r\n
+            color: #0a0a0a;\r\n
+            font-weight: 700;\r\n
+            border-radius: 8px;\r\n
+            transition: background 0.3s ease, color 0.3s ease;\r\n
+        }\r\n
+        .btn:hover {\r\n
+            background: #00ccff;\r\n
+            color: #0a0a0a;\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        form {\r\n
+            display: flex;\r\n
+            flex-direction: column;\r\n
+            gap: 1rem;\r\n
+        }\r\n
+        input[type="email"] {\r\n
+            padding: 0.8rem;\r\n
+            background: #2a2a2a;\r\n
+            border: 1px solid #00ff88;\r\n
+            border-radius: 8px;\r\n
+            color: #e0e0e0;\r\n
+            font-family: 'JetBrains Mono', monospace;\r\n
+        }\r\n
+        input[type="submit"] {\r\n
+            cursor: pointer;\r\n
+        }\r\n
+        @media (max-width: 600px) {\r\n
+            body {\r\n
+                padding: 10px;\r\n
+            }\r\n
+            h1 {\r\n
+                font-size: 1.5em;\r\n
+            }\r\n
+            h2 {\r\n
+                font-size: 1.2em;\r\n
+            }\r\n
+            nav {\r\n
+                flex-direction: column;\r\n
+                gap: 1rem;\r\n
+            }\r\n
+            .lead-magnets {\r\n
+                flex-direction: column;\r\n
+                align-items: center;\r\n
+            }\r\n
+            .lead-magnet-card {\r\n
+                max-width: 100%;\r\n
+            }\r\n
+        }\r\n
+    </style>\r\n
+</head>\r\n
+<body>\r\n
+    <nav>\r\n
+        <a href="/">Главная</a>\r\n
+        <a href="#services">Услуги</a>\r\n
+        <a href="#products">Продукты</a>\r\n
+        <a href="#lead-magnets">Акции</a>\r\n
+        <a href="#contact">Контакты</a>\r\n
+    </nav>\r\n
+    <div class="container">\r\n
+        <h1>HuzpAi: Решения в области искусственного интеллекта</h1>\r\n
+        <p>HuzpAi, израильская высокотехнологичная компания, специализируется на создании, интеграции и обучении передовых систем нейронных сетей. Наши решения объединяют несколько нейронных сетей в эффективные, самообучающиеся системы, которые отвечают потребностям бизнеса и частных лиц.</p>\r\n
+        <h2 id="services">Основные услуги</h2>\r\n
+        <ul>\r\n
+            <li>Интеграция нейронных сетей: Индивидуально настроенные системы ИИ для бесшовной интеграции.</li>\r\n
+            <li>Самообучающиеся системы: Адаптируются и оптимизируются для реальных задач.</li>\r\n
+            <li>Масштабируемые решения: Подходят для бизнеса любого размера и частных пользователей.</li>\r\n
+        </ul>\r\n
+        <h2 id="products">Основные продукты</h2>\r\n
+        <h3>1. Нейронные сотрудники для бизнеса</h3>\r\n
+        <ul>\r\n
+            <li>Настройка и интеграция "нейронных сотрудников" на базе ИИ.</li>\r\n
+            <li>Модульные системы для частичной или полной интеграции.</li>\r\n
+            <li>Автономные отделы с традиционной иерархией (руководитель-менеджер-сотрудник).</li>\r\n
+            <li>Многопроектные нейронные сотрудники для выполнения задач.</li>\r\n
+        </ul>\r\n
+        <h3>2. Домашние нейронные помощники</h3>\r\n
+        <ul>\r\n
+            <li>Помощники на базе ИИ для личного использования:</li>\r\n
+            <li>Обучение и образование.</li>\r\n
+            <li>Ежедневное планирование и организация.</li>\r\n
+            <li>Интеграция с системами умного дома и безопасности.</li>\r\n
+        </ul>\r\n
+        <h3>3. Нейронная медиа-команда</h3>\r\n
+        <ul>\r\n
+            <li>Создание контента на базе ИИ для социальных сетей.</li>\r\n
+            <li>Анализ трендов и планирование контента.</li>\r\n
+            <li>Создание текстов, изображений, аудио и видео.</li>\r\n
+            <li>Автоматическая публикация и отслеживание результатов.</li>\r\n
+        </ul>\r\n
+        <h3>4. Программы обучения ИИ</h3>\r\n
+        <ul>\r\n
+            <li>Корпоративные и общие тренинги по инструментам ИИ.</li>\r\n
+            <li>Понимание принципов и применений ИИ.</li>\r\n
+            <li>Критическое мышление и развенчание мифов.</li>\r\n
+            <li>Максимизация точных результатов от ИИ.</li>\r\n
+        </ul>\r\n
+        <h2>Почему выбирают HuzpAi?</h2>\r\n
+        <ul>\r\n
+            <li>Эффективность: Настройка один раз для стабильных результатов.</li>\r\n
+            <li>Гибкость: Решения для личных и бизнес-потребностей.</li>\r\n
+            <li>Инновации: Передовые самообучающиеся системы ИИ.</li>\r\n
+        </ul>\r\n
+        <p>HuzpAi упрощает внедрение искусственного интеллекта, предоставляя мощные и удобные решения для бизнеса и частных лиц.</p>\r\n
+        <section id="lead-magnets" class="lead-magnets">\r\n
+            <div class="lead-magnet-card">\r\n
+                <h3>Заказать ИИ-бота</h3>\r\n
+                <p>Автоматизируйте задачи с персональным ИИ-ботом, настроенным под ваш бизнес!</p>\r\n
+                <form action="https://formspree.io/f/your-form-id" method="POST">\r\n
+                    <input type="email" name="email" placeholder="Ваш email" required>\r\n
+                    <input type="submit" class="btn" value="Заказать сейчас">\r\n
+                </form>\r\n
+            </div>\r\n
+            <div class="lead-magnet-card">\r\n
+                <h3>Скидка 90% на год</h3>\r\n
+                <p>Получите обслуживание ИИ-решений со скидкой 90% в течение года!</p>\r\n
+                <form action="https://formspree.io/f/your-form-id" method="POST">\r\n
+                    <input type="email" name="email" placeholder="Ваш email" required>\r\n
+                    <input type="submit" class="btn" value="Получить скидку">\r\n
+                </form>\r\n
+            </div>\r\n
+            <div class="lead-magnet-card">\r\n
+                <h3>Бесплатный учебник</h3>\r\n
+                <p>Перейдите в Telegram-бот и получите учебник по ИИ бесплатно!</p>\r\n
+                <a href="https://t.me/HuzpAiBot" class="btn" target="_blank">Перейти в Telegram</a>\r\n
+            </div>\r\n
+        </section>\r\n
+    </div>\r\n
+</body>\r\n
+</html>\r\n
