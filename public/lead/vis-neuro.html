@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HuzpAi - ИИ-решения для бизнеса и частных лиц">
+    <meta name="keywords" content="HuzpAi, ИИ, нейронные сети, автоматизация">
+    <meta name="author" content="Grok, xAI">
+    <title>HuzpAi - Связаться с менеджером</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 5px;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #00ccff;
+            border-bottom: 1px solid #00ccff;
+        }
+        p, li {
+            font-size: 1em;
+            color: #d0d0d0;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        ul li {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        ul li:before {
+            content: ">>";
+            color: #ff0077;
+            position: absolute;
+            left: -20px;
+        }
+        a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: #1a1a1a;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);
+        }
+        nav a {
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            color: #00ccff;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #00ff88;
+            color: #0a0a0a;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1em;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            margin: 1rem auto;
+            text-align: center;
+            display: block;
+            max-width: 300px;
+        }
+        .btn:hover {
+            background: #00ccff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+            text-decoration: none;
+        }
+        .btn-section {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .neural-net {
+            display: block;
+            margin: 2rem auto;
+            max-width: 100%;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        .divider {
+            border-top: 1px solid #00ff88;
+            box-shadow: 0 0 5px rgba(0, 255, 136, 0.2);
+            margin: 2rem 0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="#services">Услуги</a>
+        <a href="#products">Продукты</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+    <div class="container">
+        <h1>HuzpAi: Решения в области искусственного интеллекта</h1>
+        <p>HuzpAi, израильская высокотехнологичная компания, специализируется на создании, интеграции и обучении передовых систем нейронных сетей. Наши решения объединяют несколько нейронных сетей в эффективные, самообучающиеся системы, которые отвечают потребностям бизнеса и частных лиц.</p>
+        <div class="btn-section">
+            <a href="#" class="btn">Contact HuzpAi Manager</a>
+        </div>
+        <canvas id="neuralNet" class="neural-net" width="400" height="200"></canvas>
+        <div class="divider"></div>
+        <h2 id="services">Основные услуги</h2>
+        <ul>
+            <li>Интеграция нейронных сетей: Индивидуально настроенные системы ИИ для бесшовной интеграции.</li>
+            <li>Самообучающиеся системы: Адаптируются и оптимизируются для реальных задач.</li>
+            <li>Масштабируемые решения: Подходят для бизнеса любого размера и частных пользователей.</li>
+        </ul>
+        <div class="divider"></div>
+        <h2 id="products">Основные продукты</h2>
+        <h3>1. Нейронные сотрудники для бизнеса</h3>
+        <ul>
+            <li>Настройка и интеграция "нейронных сотрудников" на базе ИИ.</li>
+            <li>Модульные системы для частичной или полной интеграции.</li>
+            <li>Автономные отделы с традиционной иерархией (руководитель-менеджер-сотрудник).</li>
+            <li>Многопроектные нейронные сотрудники для выполнения задач.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>2. Домашние нейронные помощники</h3>
+        <ul>
+            <li>Помощники на базе ИИ для личного использования:</li>
+            <li>Обучение и образование.</li>
+            <li>Ежедневное планирование и организация.</li>
+            <li>Интеграция с системами умного дома и безопасности.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>3. Нейронная медиа-команда</h3>
+        <ul>
+            <li>Создание контента на базе ИИ для социальных сетей.</li>
+            <li>Анализ трендов и планирование контента.</li>
+            <li>Создание текстов, изображений, аудио и видео.</li>
+            <li>Автоматическая публикация и отслеживание результатов.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>4. Программы обучения ИИ</h3>
+        <ul>
+            <li>Корпоративные и общие тренинги по инструментам ИИ.</li>
+            <li>Понимание принципов и применений ИИ.</li>
+            <li>Критическое мышление и развенчание мифов.</li>
+            <li>Максимизация точных результатов от ИИ.</li>
+        </ul>
+        <div class="divider"></div>
+        <h2>Почему выбирают HuzpAi?</h2>
+        <ul>
+            <li>Эффективность: Настройка один раз для стабильных результатов.</li>
+            <li>Гибкость: Решения для личных и бизнес-потребностей.</li>
+            <li>Инновации: Передовые самообучающиеся системы ИИ.</li>
+        </ul>
+        <div class="divider"></div>
+        <p>HuzpAi упрощает внедрение искусственного интеллекта, предоставляя мощные и удобные решения для бизнеса и частных лиц.</p>
+        <div class="btn-section">
+            <a href="#" class="btn">Contact HuzpAi Manager</a>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('neuralNet');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 400;
+        canvas.height = 200;
+
+        const nodes = [];
+        const edges = [];
+        const numNodes = 10;
+        const nodeRadius = 5;
+        const speed = 0.02;
+
+        // Создание узлов
+        for (let i = 0; i < numNodes; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * speed,
+                vy: (Math.random() - 0.5) * speed
+            });
+        }
+
+        // Создание связей
+        for (let i = 0; i < numNodes; i++) {
+            for (let j = i + 1; j < numNodes; j++) {
+                if (Math.random() < 0.3) {
+                    edges.push({ from: i, to: j, pulse: Math.random() });
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Обновление узлов
+            nodes.forEach(node => {
+                node.x += node.vx;
+                node.y += node.vy;
+
+                // Ограничение по краям
+                if (node.x < nodeRadius) { node.x = nodeRadius; node.vx *= -1; }
+                if (node.x > canvas.width - nodeRadius) { node.x = canvas.width - nodeRadius; node.vx *= -1; }
+                if (node.y < nodeRadius) { node.y = nodeRadius; node.vy *= -1; }
+                if (node.y > canvas.height - nodeRadius) { node.y = canvas.height - nodeRadius; node.vy *= -1; }
+            });
+
+            // Отрисовка связей
+            edges.forEach(edge => {
+                const from = nodes[edge.from];
+                const to = nodes[edge.to];
+                ctx.beginPath();
+                ctx.moveTo(from.x, from.y);
+                ctx.lineTo(to.x, to.y);
+                ctx.strokeStyle = '#00ccff';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Пульсация
+                edge.pulse += 0.02;
+                if (edge.pulse > 1) edge.pulse = 0;
+                const pulseX = from.x + (to.x - from.x) * edge.pulse;
+                const pulseY = from.y + (to.y - from.y) * edge.pulse;
+                ctx.beginPath();
+                ctx.arc(pulseX, pulseY, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#00ff88';
+                ctx.fill();
+            });
+
+            // Отрисовка узлов
+            nodes.forEach(node => {
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, nodeRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#00ff88';
+                ctx.fill();
+                ctx.strokeStyle = '#00ccff';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
