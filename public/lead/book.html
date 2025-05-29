@@ -6,7 +6,7 @@
     <meta name="description" content="HuzpAi - Защищенный доступ к книге">
     <meta name="keywords" content="HuzpAi, книга, ИИ">
     <meta name="author" content="Grok, xAI">
-    <title>HuzpAi - Доступ к книге</title>
+    <title>HuzpAi - Книга</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -77,6 +77,19 @@
             margin-top: 1rem;
             display: none;
         }
+        .book-content {
+            display: none;
+            margin-top: 2rem;
+        }
+        .book-content h2 {
+            color: #00ff88;
+            font-size: 1.4em;
+            margin-bottom: 1rem;
+        }
+        .book-content p {
+            font-size: 1em;
+            color: #d0d0d0;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -93,23 +106,26 @@
 <body>
     <div class="container">
         <h1>Доступ к книге HuzpAi</h1>
-        <form id="accessForm" action="/verify-code" method="POST">
+        <form id="accessForm">
             <input type="text" name="code" placeholder="Введите код из Telegram" required>
             <input type="submit" value="Получить доступ">
         </form>
         <p id="error" class="error">Неверный код, попробуйте снова.</p>
+        <div id="bookContent" class="book-content">
+            <h2>Книга: Введение в ИИ</h2>
+            <p>Это заглушка для книги. Уточните содержимое (например, учебник n8n) и формат (HTML, PDF), чтобы я мог добавить реальный контент.</p>
+        </div>
     </div>
     <script>
-        document.getElementById('accessForm').addEventListener('submit', async (e) => {
+        // Заглушка для проверки кода (замените на реальный API)
+        const validCodes = ['TEST1234']; // Временный список кодов
+        document.getElementById('accessForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const code = e.target.code.value;
-            const response = await fetch('/verify-code', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ code })
-            });
-            if (response.ok) {
-                window.location.href = '/book';
+            if (validCodes.includes(code)) {
+                document.getElementById('accessForm').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
+                document.getElementById('bookContent').style.display = 'block';
             } else {
                 document.getElementById('error').style.display = 'block';
             }
@@ -117,147 +133,3 @@
     </script>
 </body>
 </html>
-```
-
-#### public/book.html (заглушка книги)
-<xaiArtifact artifact_id="ebd5c0ec-0c3a-4582-b551-c3655fb8538e" artifact_version_id="5cd7f76c-3178-450c-9355-1d2ec8a6e14b" title="book.html" contentType="text/html">
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HuzpAi - Книга по ИИ">
-    <meta name="keywords" content="HuzpAi, книга, ИИ">
-    <meta name="author" content="Grok, xAI">
-    <title>HuzpAi - Книга</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'JetBrains Mono', monospace;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .container {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-        }
-        h1 {
-            color: #00ff88;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.8em;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        p {
-            font-size: 1em;
-            color: #d0d0d0;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Книга HuzpAi</h1>
-        <p>Добро пожаловать! Здесь будет содержимое книги. Уточните формат (HTML, PDF) и содержимое для полной реализации.</p>
-    </div>
-</body>
-</html>
-```
-
-#### server.js (бэкенд)
-<xaiArtifact artifact_id="bc2c360f-0aa3-4aa9-b45b-1782b0d91918" artifact_version_id="d6c2366d-2fad-45d0-a2ba-f0aa8658b72c" title="server.js" contentType="text/javascript">
-```javascript
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const { v4: uuidv4 } = require('uuid');
-
-const app = express();
-app.use(express.json());
-app.use(express.static('public'));
-
-const db = new sqlite3.Database(':memory:');
-db.serialize(() => {
-    db.run('CREATE TABLE codes (code TEXT, user_id TEXT, created_at INTEGER, used INTEGER)');
-});
-
-app.post('/verify-code', (req, res) => {
-    const { code } = req.body;
-    db.get('SELECT * FROM codes WHERE code = ? AND used = 0', [code], (err, row) => {
-        if (err || !row) {
-            return res.status(401).json({ error: 'Invalid code' });
-        }
-        db.run('UPDATE codes SET used = 1 WHERE code = ?', [code]);
-        res.status(200).json({ success: true });
-    });
-});
-
-// Заглушка для генерации кода (вызывается ботом)
-app.post('/generate-code', (req, res) => {
-    const { user_id } = req.body;
-    const code = uuidv4();
-    const created_at = Date.now();
-    db.run('INSERT INTO codes (code, user_id, created_at, used) VALUES (?, ?, ?, 0)', [code, user_id, created_at], (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Database error' });
-        }
-        res.status(200).json({ code });
-    });
-});
-
-app.get('/book', (req, res) => {
-    res.sendFile(__dirname + '/public/book.html');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-```
-
-#### bot.js (Telegram-бот)
-<xaiArtifact artifact_id="8058c74f-c018-4a85-bbdc-a1b5bcf9cdc2" artifact_version_id="e2bb2e71-2e66-4fb2-a75a-ab6a8e252505" title="bot.js" contentType="text/javascript">
-```javascript
-const TelegramBot = require('node-telegram-bot-api');
-const fetch = require('node-fetch');
-
-const token = 'YOUR_BOT_TOKEN'; // Замени на токен от BotFather
-const bot = new TelegramBot(token, { polling: true });
-
-bot.onText(/\/start/, (msg) => {
-    bot.sendMessage(msg.chat.id, 'Добро пожаловать! Используйте /getcode для получения кода доступа к книге.');
-});
-
-bot.onText(/\/getcode/, async (msg) => {
-    const user_id = msg.from.id;
-    const response = await fetch('http://localhost:3000/generate-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_id })
-    });
-    const data = await response.json();
-    if (data.code) {
-        bot.sendMessage(msg.chat.id, `Ваш код доступа: ${data.code}`);
-    } else {
-        bot.sendMessage(msg.chat.id, 'Ошибка генерации кода, попробуйте позже.');
-    }
-});
