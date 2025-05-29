@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HuzpAi - Инструкция по настройке n8n для автоматизации Gmail и Telegram">
+    <meta name="keywords" content="HuzpAi, n8n, Gmail, Telegram, OpenAI, автоматизация">
+    <meta name="author" content="Grok, xAI">
+    <title>HuzpAi - Инструкция по n8n</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .auth-container {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            max-width: 400px;
+            text-align: center;
+            margin: auto;
+        }
+        .content-container {
+            display: none;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            margin-top: 2rem;
+        }
+        header {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.2em;
+        }
+        nav {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);
+            margin-bottom: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding-left: 0;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        nav ul li a:hover {
+            color: #00ccff;
+            transform: scale(1.05);
+        }
+        h2 {
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 5px;
+            margin: 1.5rem 0 1rem;
+        }
+        h3 {
+            color: #00ccff;
+            font-size: 1.4em;
+            border-bottom: 1px solid #00ccff;
+            padding-bottom: 5px;
+            margin: 1rem 0;
+        }
+        p, li {
+            font-size: 1em;
+            color: #d0d0d0;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        ul li {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        ul li:before {
+            content: ">>";
+            color: #ff0077;
+            position: absolute;
+            left: -20px;
+        }
+        a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #00ccff;
+            text-decoration: underline;
+        }
+        code {
+            background: #2a2a2a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #00ff88;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        pre {
+            background: #2a2a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .screenshot-placeholder {
+            background: #2a2a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #00ff88;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input[type="password"] {
+            padding: 0.8rem;
+            background: #2a2a2a;
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            padding: 0.8rem;
+            background: #00ff88;
+            color: #0a0a0a;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1em;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        input[type="submit"]:hover {
+            background: #00ccff;
+            transform: scale(1.05);
+        }
+        .error {
+            color: #ff0077;
+            font-size: 0.9em;
+            margin-top: 1rem;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);
+            margin-top: 2rem;
+            font-size: 0.9em;
+            color: #d0d0d0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .container, .auth-container {
+                padding: 15px;
+            }
+            input[type="password"], input[type="submit"] {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Доступ к инструкции</h1>
+        <form id="authForm">
+            <input type="password" name="password" placeholder="Введите пароль" required>
+            <input type="submit" value="Войти">
+        </form>
+        <p id="error" class="error">Неверный пароль, попробуйте снова.</p>
+    </div>
+    <div class="content-container" id="mainContent">
+        <header>
+            <h1>Инструкция по настройке n8n: Gmail, Telegram, OpenAI</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#intro">Введение</a></li>
+                <li><a href="#prerequisites">Подготовка</a></li>
+                <li><a href="#telegram">Настройка Telegram</a></li>
+                <li><a href="#gmail">Настройка Gmail</a></li>
+                <li><a href="#openai">Настройка OpenAI</a></li>
+                <li><a href="#n8n-local">Локальная настройка n8n</a></li>
+                <li><a href="#render-deploy">Деплой на Render</a></li>
+                <li><a href="#testing">Тестирование</a></li>
+                <li><a href="#customization">Кастомизация</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h2 id="intro">Введение</h2>
+            <p>Этот учебник поможет вам настроить workflow n8n для автоматического суммирования писем из Gmail с помощью OpenAI GPT-4o и отправки сводок в Telegram. Мы пройдем все этапы: от подготовки окружения до деплоя на Render. Workflow взят с <a href="https://n8n.io/workflows/4245" target="_blank">n8n.io</a>.</p>
+            <p>Вы научитесь интегрировать Gmail, Telegram и OpenAI, развернуть n8n на Render и протестировать автоматизацию. Следуйте шагам строго по инструкции.</p>
+
+            <h2 id="prerequisites">Подготовка окружения</h2>
+            <h3>Шаг 1: Установка инструментов</h3>
+            <p>Для работы вам понадобятся следующие инструменты:</p>
+            <ul>
+                <li><strong>Node.js (v16+)</strong>: Скачайте и установите с <a href="https://nodejs.org" target="_blank">nodejs.org</a>. Проверьте установку:
+                    <pre><code>node -v
+npm -v</code></pre>
+                    [Скриншот: Терминал с выводом версий Node.js и npm]
+                </li>
+                <li><strong>Git</strong>: Установите с <a href="https://git-scm.com" target="_blank">git-scm.com</a>. Проверьте:
+                    <pre><code>git --version</code></pre>
+                </li>
+                <li><strong>Docker</strong>: Установите с <a href="https://www.docker.com" target="_blank">docker.com</a> для деплоя n8n. Проверьте:
+                    <pre><code>docker --version</code></pre>
+                </li>
+                <li><strong>VS Code</strong> (опционально): Скачайте с <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a> для редактирования кода.</li>
+            </ul>
+
+            <h3>Шаг 2: Регистрация аккаунтов</h3>
+            <p>Создайте аккаунты на следующих платформах:</p>
+            <ul>
+                <li><strong>Render</strong>: Зарегистрируйтесь на <a href="https://render.com" target="_blank">render.com</a> для хостинга n8n.
+                    [Скриншот: Форма регистрации на Render]
+                </li>
+                <li><strong>GitHub</strong>: Создайте аккаунт на <a href="https://github.com" target="_blank">github.com</a> для хранения репозитория.
+                    [Скриншот: Форма регистрации на GitHub]
+                </li>
+                <li><strong>Google Cloud</strong>: Зарегистрируйтесь на <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a> для Gmail API.
+                    [Скриншот: Главная страница Google Cloud Console]
+                </li>
+                <li><strong>OpenAI</strong>: Создайте аккаунт на <a href="https://platform.openai.com" target="_blank">platform.openai.com</a> для API-ключа.
+                    [Скриншот: Форма регистрации на OpenAI]
+                </li>
+                <li><strong>Telegram</strong>: Убедитесь, что у вас есть аккаунт Telegram и доступ к @BotFather.</li>
+            </ul>
+            <p><strong>Пояснение</strong>: Эти инструменты и аккаунты необходимы для настройки и деплоя. Node.js и Docker используются для n8n, GitHub — для хранения кода, а аккаунты подключают API.</p>
+
+            <h2 id="telegram">Настройка Telegram-бота</h2>
+            <h3>Шаг 1: Создание бота</h3>
+            <p>Бот будет отправлять сводки писем в Telegram.</p>
+            <ol>
+                <li>Открой Telegram и найди <a href="https://t.me/BotFather" target="_blank">@BotFather</a>.</li>
+                <li>Отправь команды:
+                    <pre><code>/start
+/newbot</code></pre>
+                </li>
+                <li>Задай имя бота (например, <code>HuzpAiBot</code>) и username (например, <code>@HuzpAiBot</code>).</li>
+                <li>Получи токен (например, <code>123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>). Сохрани его в безопасном месте.
+                    [Скриншот: Сообщение от @BotFather с токеном]
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Получение chat ID</h3>
+            <p>Chat ID указывает, куда отправлять сводки.</p>
+            <ol>
+                <li>Найди <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a> в Telegram.</li>
+                <li>Отправь <code>/start</code>.</li>
+                <li>Получи ID чата (например, <code>123456789</code>).
+                    [Скриншот: Сообщение от @userinfobot с chat ID]
+                </li>
+                <li>Альтернатива: Отправь сообщение своему боту и выполни:
+                    <pre><code>curl https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates</code></pre>
+                    Найди <code>chat.id</code> в ответе.
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: Токен подключает n8n к боту, а chat ID определяет получателя сводок.</p>
+
+            <h2 id="gmail">Настройка Gmail API</h2>
+            <h3>Шаг 1: Создание проекта</h3>
+            <p>Gmail API позволяет n8n читать ваши письма.</p>
+            <ol>
+                <li>Перейди на <a href="https://console.cloud.google.com" target="_blank">Google Cloud Console</a>.</li>
+                <li>Нажми "Select a project" → "New Project". Задай имя (например, <code>HuzpAi-n8n</code>).
+                    [Скриншот: Создание проекта в Google Cloud]
+                </li>
+                <li>Включить Gmail API:
+                    <ul>
+                        <li>Меню → "APIs & Services" → "Library".</li>
+                        <li>Найди "Gmail API" и нажми "Enable".
+                            [Скриншот: Включение Gmail API]
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Настройка OAuth</h3>
+            <p>OAuth-ключи обеспечивают безопасный доступ.</p>
+            <ol>
+                <li>В Google Cloud Console перейди в "APIs & Services" → "Credentials".</li>
+                <li>Нажми "Create Credentials" → "OAuth 2.0 Client IDs".</li>
+                <li>Выбери тип "Web application".</li>
+                <li>Укажи:
+                    <ul>
+                        <li>Name: <code>HuzpAi-n8n</code>.</li>
+                        <li>Authorized redirect URIs: <code>https://<YOUR_RENDER_URL>/rest/oauth2-credential/callback</code> (добавь после деплоя).</li>
+                    </ul>
+                    [Скриншот: Настройка OAuth-клиента]
+                </li>
+                <li>Скачай JSON-файл (содержит <code>client_id</code>, <code>client_secret</code>).
+                    [Скриншот: Скачивание JSON-файла]
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: OAuth-ключи позволяют n8n авторизоваться в Gmail. Redirect URI будет известен после деплоя.</p>
+
+            <h2 id="openai">Настройка OpenAI API</h2>
+            <h3>Шаг 1: Получение API-ключа</h3>
+            <p>OpenAI GPT-4o создает краткие сводки писем.</p>
+            <ol>
+                <li>Зарегистрируйся на <a href="https://platform.openai.com" target="_blank">platform.openai.com</a>.</li>
+                <li>Перейди в "API Keys" → "Create new secret key".</li>
+                <li>Сохрани ключ (например, <code>sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>).
+                    [Скриншот: Создание API-ключа OpenAI]
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: Ключ подключает n8n к GPT-4o. Храни его в безопасности.</p>
+
+            <h2 id="n8n-local">Локальная настройка n8n</h2>
+            <h3>Шаг 1: Установка n8n</h3>
+            <p>Протестируем workflow локально.</p>
+            <ol>
+                <li>Установи n8n:
+                    <pre><code>npm install n8n -g
+n8n</code></pre>
+                    [Скриншот: Терминал с запуском n8n]
+                </li>
+                <li>Открой <a href="http://localhost:5678" target="_blank">http://localhost:5678</a> в браузере.
+                    [Скриншот: Интерфейс n8n]
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Импорт workflow</h3>
+            <p>Добавим workflow в n8n.</p>
+            <ol>
+                <li>Перейди на <a href="https://n8n.io/workflows/4245" target="_blank">n8n.io/workflows/4245</a>.</li>
+                <li>Нажми "Copy Workflow".
+                    [Скриншот: Кнопка "Copy Workflow"]
+                </li>
+                <li>В n8n: "Workflows" → "Import from Clipboard".
+                    [Скриншот: Импорт workflow в n8n]
+                </li>
+                <li>Сохрани workflow.</li>
+            </ol>
+
+            <h3>Шаг 3: Настройка учетных данных</h3>
+            <p>Подключим Gmail, OpenAI и Telegram.</p>
+            <ol>
+                <li><strong>Gmail</strong>:
+                    <ul>
+                        <li>В n8n: "Credentials" → "Add Credential" → "Gmail OAuth2".</li>
+                        <li>Вставь <code>client_id</code> и <code>client_secret</code> из JSON-файла Google Cloud.</li>
+                        <li>Нажми "Sign in with Google" и авторизуйся.
+                            [Скриншот: Настройка Gmail OAuth]
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>OpenAI</strong>:
+                    <ul>
+                        <li>"Credentials" → "Add Credential" → "OpenAI API".</li>
+                        <li>Вставь API-ключ.
+                            [Скриншот: Настройка OpenAI API]
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Telegram</strong>:
+                    <ul>
+                        <li>"Credentials" → "Add Credential" → "Telegram API".</li>
+                        <li>Вставь бот-токен.
+                            [Скриншот: Настройка Telegram API]
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Шаг 4: Настройка workflow</h3>
+            <p>Адаптируем workflow под ваши нужды.</p>
+            <ol>
+                <li>Открой workflow в n8n.</li>
+                <li>В ноде "Telegram":
+                    <ul>
+                        <li>Укажи chat ID (например, <code>123456789</code>).
+                            [Скриншот: Настройка Telegram-ноды]
+                        </li>
+                    </ul>
+                </li>
+                <li>В ноде "Set Summary Language":
+                    <ul>
+                        <li>Укажи <code>Russian</code>.
+                            [Скриншот: Настройка языка]
+                        </li>
+                    </ul>
+                </li>
+                <li>В ноде "Summary Generation Agent":
+                    <ul>
+                        <li>Настрой тон, например: <code>Кратко и формально</code>.
+                            [Скриншот: Настройка тона]
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Шаг 5: Тестирование локально</h3>
+            <p>Проверим работу workflow.</p>
+            <ol>
+                <li>Нажми "Execute Workflow" в n8n.
+                    [Скриншот: Кнопка "Execute Workflow"]
+                </li>
+                <li>Отправь тестовое письмо в Gmail.</li>
+                <li>Проверь Telegram: Должна прийти сводка.
+                    [Скриншот: Сводка в Telegram]
+                </li>
+                <li>Если ошибка, проверь логи в n8n.
+                    [Скриншот: Логи в n8n]
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: Локальное тестирование подтверждает, что workflow работает. Если сводка не приходит, проверь ключи и настройки.</p>
+
+            <h2 id="render-deploy">Деплой на Render</h2>
+            <h3>Шаг 1: Создание репозитория</h3>
+            <p>Подготовим проект для Render.</p>
+            <ol>
+                <li>Создай новый репозиторий на <a href="https://github.com" target="_blank">GitHub</a> (например, <code>huzpai-n8n</code>).
+                    [Скриншот: Создание репозитория на GitHub]
+                </li>
+                <li>Склонируй локально:
+                    <pre><code>git clone https://github.com/<YOUR_USERNAME>/huzpai-n8n.git
+cd huzpai-n8n</code></pre>
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Настройка проекта</h3>
+            <p>Создадим файлы для деплоя.</p>
+            <ol>
+                <li>Создай следующие файлы:
+                    <ul>
+                        <li><strong>Dockerfile</strong>:
+                            <pre><code>FROM n8nio/n8n:latest
+CMD ["n8n", "start"]</code></pre>
+                        </li>
+                        <li><strong>docker-compose.yml</strong>:
+                            <pre><code>version: '3'
+services:
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - N8N_EMAIL=${N8N_EMAIL}
+      - N8N_PASSWORD=${N8N_PASSWORD}
+      - GENERIC_TIMEZONE=Europe/Moscow
+    volumes:
+      - n8n_data:/home/node/.n8n
+volumes:
+  n8n_data:</code></pre>
+                        </li>
+                        <li><strong>.env</strong> (не пушь в Git):
+                            <pre><code>N8N_HOST=huzpai-n8n.onrender.com
+N8N_EMAIL=admin@huzpai.com
+N8N_PASSWORD=your_secure_password</code></pre>
+                        </li>
+                        <li><strong>.gitignore</strong>:
+                            <pre><code>node_modules/
+.DS_Store
+.env</code></pre>
+                        </li>
+                        <li><strong>package.json</strong>:
+                            <pre><code>{
+  "name": "huzpai-n8n",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "n8n start"
+  },
+  "dependencies": {
+    "n8n": "latest"
+  }
+}</code></pre>
+                        </li>
+                    </ul>
+                    [Скриншот: Структура проекта в VS Code]
+                </li>
+            </ol>
+
+            <h3>Шаг 3: Деплой на Render</h3>
+            <p>Развернем n8n на Render.</p>
+            <ol>
+                <li>Пушни проект в GitHub:
+                    <pre><code>git add .
+git commit -m "n8n setup"
+git push origin main</code></pre>
+                </li>
+                <li>Войди в <a href="https://dashboard.render.com" target="_blank">Render Dashboard</a>.</li>
+                <li>Нажми "New" → "Web Service".
+                    [Скриншот: Создание Web Service]
+                </li>
+                <li>Подключи репозиторий <code>huzpai-n8n</code>.</li>
+                <li>Настрой:
+                    <ul>
+                        <li>Name: <code>huzpai-n8n</code>.</li>
+                        <li>Environment: Docker.</li>
+                        <li>Region: Ближайший (например, Frankfurt).</li>
+                        <li>Branch: <code>main</code>.</li>
+                        <li>Environment Variables:
+                            <pre><code>N8N_HOST=huzpai-n8n.onrender.com
+N8N_EMAIL=admin@huzpai.com
+N8N_PASSWORD=your_secure_password
+N8N_PROTOCOL=https
+N8N_PORT=5678
+GENERIC_TIMEZONE=Europe/Moscow</code></pre>
+                            [Скриншот: Настройка переменных окружения]
+                        </li>
+                    </ul>
+                </li>
+                <li>Нажми "Create Web Service". Дождитесь деплоя (~5-10 минут).
+                    [Скриншот: Процесс деплоя]
+                </li>
+                <li>Открой <code>https://huzpai-n8n.onrender.com</code> и войди (email: <code>admin@huzpai.com</code>, пароль: <code>your_secure_password</code>).
+                    [Скриншот: Вход в n8n на Render]
+                </li>
+            </ol>
+
+            <h3>Шаг 4: Настройка workflow на Render</h3>
+            <p>Повторим настройку workflow.</p>
+            <ol>
+                <li>Импортируй workflow (см. Шаг 2 в "Локальная настройка").</li>
+                <li>Добавь учетные данные (см. Шаг 3 в "Локальная настройка").</li>
+                <li>В ноде Gmail Trigger укажи Redirect URI:
+                    <pre><code>https://huzpai-n8n.onrender.com/rest/oauth2-credential/callback</code></pre>
+                    [Скриншот: Redirect URI в Gmail Trigger]
+                </li>
+                <li>Активируй workflow:
+                    <ul>
+                        <li>Нажми "Activate".
+                            [Скриншот: Активация workflow]
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: Workflow теперь работает на Render с HTTPS, необходимым для Telegram.</p>
+
+            <h2 id="testing">Тестирование</h2>
+            <h3>Шаг 1: Тестирование workflow</h3>
+            <p>Проверим, что автоматизация работает.</p>
+            <ol>
+                <li>Отправь тестовое письмо в Gmail.</li>
+                <li>Проверь Telegram: Должна прийти сводка.
+                    [Скриншот: Сводка в Telegram]
+                </li>
+                <li>Открой n8n на Render, проверь логи workflow.
+                    [Скриншот: Логи в n8n]
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Отладка</h3>
+            <p>Если что-то не работает:</p>
+            <ul>
+                <li><strong>Gmail не срабатывает</strong>:
+                    <ul>
+                        <li>Проверь OAuth (повторно авторизуйся).</li>
+                        <li>Убедись, что Gmail Trigger настроен на новые письма.</li>
+                    </ul>
+                </li>
+                <li><strong>OpenAI не суммирует</strong>:
+                    <ul>
+                        <li>Проверь API-ключ.</li>
+                        <li>Укажи модель <code>gpt-4o</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>Telegram не отправляет</strong>:
+                    <ul>
+                        <li>Проверь токен и chat ID.</li>
+                        <li>Убедись, что HTTPS включен.</li>
+                    </ul>
+                </li>
+                [Скриншот: Пример ошибки в логах]
+            </ul>
+            <p><strong>Пояснение</strong>: Логи в n8n помогают выявить проблемы. Проверьте каждый сервис.</p>
+
+            <h2 id="customization">Кастомизация</h2>
+            <h3>Шаг 1: Фильтрация писем</h3>
+            <p>Ограничьте письма по отправителю.</p>
+            <ol>
+                <li>Добавь ноду "Filter" после Gmail Trigger.</li>
+                <li>Настрой фильтр, например:
+                    <pre><code>{
+  "conditions": [
+    {
+      "key": "from",
+      "value": "example@domain.com",
+      "operation": "equals"
+    }
+  ]
+}</code></pre>
+                    [Скриншот: Настройка Filter]
+                </li>
+            </ol>
+
+            <h3>Шаг 2: Настройка тона</h3>
+            <p>Измените стиль сводок.</p>
+            <ol>
+                <li>В ноде "Summary Generation Agent" задай prompt:
+                    <pre><code>Summarize the email in Russian, keeping it concise and formal.</code></pre>
+                    [Скриншот: Настройка prompt]
+                </li>
+            </ol>
+
+            <h3>Шаг 3: Другие модели</h3>
+            <p>Попробуйте альтернативные модели.</p>
+            <ol>
+                <li>В ноде OpenAI выбери другую модель (например, Claude через API Anthropic).</li>
+                <li>Настрой API-ключ для нового сервиса.
+                    [Скриншот: Выбор модели]
+                </li>
+            </ol>
+            <p><strong>Пояснение</strong>: Кастомизация делает workflow гибким под ваши задачи.</p>
+        </div>
+        <footer>
+            <p>Создано с 💡 HuzpAi для автоматизации будущего</p>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('authForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = e.target.password.value;
+            if (password === 'TEST1234') { // Временный пароль
+                document.querySelector('.auth-container').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
