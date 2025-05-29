@@ -287,10 +287,10 @@
 
         const nodes = [];
         const edges = [];
-        const numNodes = 10;
-        const nodeRadius = 5;
-        const speed = 0.05;
-        const maxSpeed = 0.1;
+        const numNodes = 15;
+        const nodeRadius = 7;
+        const speed = 0.5;
+        const maxSpeed = 0.7;
 
         // Создание узлов
         for (let i = 0; i < numNodes; i++) {
@@ -354,7 +354,7 @@
                 ctx.stroke();
 
                 // Пульсация
-                edge.pulse += 0.02;
+                edge.pulse += 0.2;
                 if (edge.pulse > 1) edge.pulse = 0;
                 const pulseX = from.x + (to.x - from.x) * edge.pulse;
                 const pulseY = from.y + (to.y - from.y) * edge.pulse;
