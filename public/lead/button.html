@@ -1,0 +1,335 @@
+```html
+<!DOCTYPE html>\r\n
+<html lang="ru">\r\n
+<head>\r\n
+    <meta charset="UTF-8">\r\n
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n
+    <meta name="description" content="HuzpAi - ИИ-решения для бизнеса и частных лиц">\r\n
+    <meta name="keywords" content="HuzpAi, ИИ, нейронные сети, автоматизация">\r\n
+    <meta name="author" content="Grok, xAI">\r\n
+    <title>HuzpAi - Решения ИИ</title>\r\n
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">\r\n
+    <style>\r\n
+        * {\r\n
+            margin: 0;\r\n
+            padding: 0;\r\n
+            box-sizing: border-box;\r\n
+        }\r\n
+        body {\r\n
+            background-color: #0a0a0a;\r\n
+            color: #e0e0e0;\r\n
+            font-family: 'JetBrains Mono', monospace;\r\n
+            line-height: 1.6;\r\n
+            margin: 0;\r\n
+            padding: 20px;\r\n
+            max-width: 800px;\r\n
+            margin-left: auto;\r\n
+            margin-right: auto;\r\n
+        }\r\n
+        h1, h2, h3 {\r\n
+            color: #00ff88;\r\n
+            text-transform: uppercase;\r\n
+            letter-spacing: 2px;\r\n
+            border-bottom: 2px solid #00ff88;\r\n
+            padding-bottom: 5px;\r\n
+        }\r\n
+        h1 {\r\n
+            font-size: 1.8em;\r\n
+            text-align: center;\r\n
+        }\r\n
+        h2 {\r\n
+            font-size: 1.4em;\r\n
+            margin-top: 30px;\r\n
+        }\r\n
+        h3 {\r\n
+            font-size: 1.2em;\r\n
+            color: #00ccff;\r\n
+            border-bottom: 1px solid #00ccff;\r\n
+        }\r\n
+        p, li {\r\n
+            font-size: 1em;\r\n
+            color: #d0d0d0;\r\n
+        }\r\n
+        ul {\r\n
+            list-style: none;\r\n
+            padding-left: 20px;\r\n
+        }\r\n
+        ul li {\r\n
+            position: relative;\r\n
+            margin-bottom: 10px;\r\n
+        }\r\n
+        ul li:before {\r\n
+            content: ">>";\r\n
+            color: #ff0077;\r\n
+            position: absolute;\r\n
+            left: -20px;\r\n
+        }\r\n
+        a {\r\n
+            color: #00ff88;\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        a:hover {\r\n
+            text-decoration: underline;\r\n
+        }\r\n
+        .container {\r\n
+            background: #1a1a1a;\r\n
+            padding: 20px;\r\n
+            border-radius: 10px;\r\n
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);\r\n
+        }\r\n
+        nav {\r\n
+            display: flex;\r\n
+            justify-content: center;\r\n
+            gap: 2rem;\r\n
+            padding: 1rem;\r\n
+            background: #1a1a1a;\r\n
+            margin-bottom: 2rem;\r\n
+            border-radius: 8px;\r\n
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);\r\n
+        }\r\n
+        nav a {\r\n
+            color: #00ff88;\r\n
+            font-weight: 700;\r\n
+            font-size: 1.1em;\r\n
+            transition: color 0.3s ease, transform 0.2s ease;\r\n
+        }\r\n
+        nav a:hover {\r\n
+            color: #00ccff;\r\n
+            transform: scale(1.05);\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        .btn {\r\n
+            display: inline-block;\r\n
+            padding: 0.8rem 1.5rem;\r\n
+            background: #00ff88;\r\n
+            color: #0a0a0a;\r\n
+            font-family: 'JetBrains Mono', monospace;\r\n
+            font-weight: 700;\r\n
+            font-size: 1em;\r\n
+            border-radius: 8px;\r\n
+            text-transform: uppercase;\r\n
+            letter-spacing: 1px;\r\n
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);\r\n
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;\r\n
+            margin-top: 1rem;\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        .btn:hover {\r\n
+            background: #00ccff;\r\n
+            transform: scale(1.05);\r\n
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);\r\n
+            text-decoration: none;\r\n
+        }\r\n
+        @media (max-width: 600px) {\r\n
+            body {\r\n
+                padding: 10px;\r\n
+            }\r\n
+            h1 {\r\n
+                font-size: 1.5em;\r\n
+            }\r\n
+            h2 {\r\n
+                font-size: 1.2em;\r\n
+            }\r\n
+            nav {\r\n
+                flex-direction: column;\r\n
+                gap: 1rem;\r\n
+            }\r\n
+            .btn {\r\n
+                padding: 0.6rem 1rem;\r\n
+                font-size: 0.9em;\r\n
+            }\r\n
+        }\r\n
+    </style>\r\n
+</head>\r\n
+<body>\r\n
+    <nav>\r\n
+        <a href="/">Главная</a>\r\n
+        <a href="#services">Услуги</a>\r\n
+        <a href="#products">Продукты</a>\r\n
+        <a href="#contact">Контакты</a>\r\n
+    </nav>\r\n
+    <div class="container">\r\n
+        <h1>HuzpAi: Решения в области искусственного интеллекта</h1>\r\n
+        <p>HuzpAi, израильская высокотехнологичная компания, специализируется на создании, интеграции и обучении передовых систем нейронных сетей. Наши решения объединяют несколько нейронных сетей в эффективные, самообучающиеся системы, которые отвечают потребностям бизнеса и частных лиц.</p>\r\n
+        <a href="#" class="btn">Contact HuzpAi Manager</a>\r\n
+        <h2 id="services">Основные услуги</h2>\r\n
+        <ul>\r\n
+            <li>Интеграция нейронных сетей: Индивидуально настроенные системы ИИ для бесшовной интеграции.</li>\r\n
+            <li>Самообучающиеся системы: Адаптируются и оптимизируются для реальных задач.</li>\r\n
+            <li>Масштабируемые решения: Подходят для бизнеса любого размера и частных пользователей.</li>\r\n
+        </ul>\r\n
+        <h2 id="products">Основные продукты</h2>\r\n
+        <h3>1. Нейронные сотрудники для бизнеса</h3>\r\n
+        <ul>\r\n
+            <li>Настройка и интеграция "нейронных сотрудников" на базе ИИ.</li>\r\n
+            <li>Модульные системы для частичной или полной интеграции.</li>\r\n
+            <li>Автономные отделы с традиционной иерархией (руководитель-менеджер-сотрудник).</li>\r\n
+            <li>Многопроектные нейронные сотрудники для выполнения задач.</li>\r\n
+        </ul>\r\n
+        <h3>2. Домашние нейронные помощники</h3>\r\n
+        <ul>\r\n
+            <li>Помощники на базе ИИ для личного использования:</li>\r\n
+            <li>Обучение и образование.</li>\r\n
+            <li>Ежедневное планирование и организация.</li>\r\n
+            <li>Интеграция с системами умного дома и безопасности.</li>\r\n
+        </ul>\r\n
+        <h3>3. Нейронная медиа-команда</h3>\r\n
+        <ul>\r\n
+            <li>Создание контента на базе ИИ для социальных сетей.</li>\r\n
+            <li>Анализ трендов и планирование контента.</li>\r\n
+            <li>Создание текстов, изображений, аудио и видео.</li>\r\n
+            <li>Автоматическая публикация и отслеживание результатов.</li>\r\n
+        </ul>\r\n
+        <h3>4. Программы обучения ИИ</h3>\r\n
+        <ul>\r\n
+            <li>Корпоративные и общие тренинги по инструментам ИИ.</li>\r\n
+            <li>Понимание принципов и применений ИИ.</li>\r\n
+            <li>Критическое мышление и развенчание мифов.</li>\r\n
+            <li>Максимизация точных результатов от ИИ.</li>\r\n
+        </ul>\r\n
+        <h2>Почему выбирают HuzpAi?</h2>\r\n
+        <ul>\r\n
+            <li>Эффективность: Настройка один раз для стабильных результатов.</li>\r\n
+            <li>Гибкость: Решения для личных и бизнес-потребностей.</li>\r\n
+            <li>Инновации: Передовые самообучающиеся системы ИИ.</li>\r\n
+        </ul>\r\n
+        <p>HuzpAi упрощает внедрение искусственного интеллекта, предоставляя мощные и удобные решения для бизнеса и частных лиц.</p>\r\n
+    </div>\r\n
+</body>\r\n
+</html>\r\n
+```
+
+---
+
+### Что добавлено
+1. **Кнопка "Contact HuzpAi Manager"**:
+   - Размещена после первого `<p>` в `.container`.
+   - Тег `<a href="#" class="btn">` с placeholder-ссылкой (замени на реальную, например, `https://t.me/HuzpAiManager` или `mailto:manager@huzpai.com`).
+
+2. **Стиль кнопки**:
+   - Класс `.btn`:
+     - Фон: `#00ff88` (зеленый HuzpAi).
+     - Hover: `#00ccff` (голубой) с масштабом (`scale(1.05)`) и усиленной тенью.
+     - Шрифт: JetBrains Mono, `font-weight: 700`, `text-transform: uppercase`.
+     - BIOS-стиль: неоновое свечение (`box-shadow`), моноширинный шрифт, закругленные углы (`border-radius: 8px`).
+     - Мягкость: плавные переходы (`transition`), легкий масштаб, ненавязчивая тень.
+   - Адаптивность: уменьшен размер на <600px.
+
+3. **Изменения в коде**:
+   - Убраны лид-магниты из предыдущего ответа (формы, Telegram-учебник), так как ты хочешь работать поэтапно.
+   - Сохранена навигация без ссылки на "Акции" (можно вернуть позже).
+   - CRLF-окончания строк (`\r\n`) подтверждены.
+
+4. **Избежание Crimson Marleen**:
+   - Нет яркого красного (#DC143C), плоского дизайна или плохой читаемости.
+   - Темный фон (#0a0a0a), неоновые акценты (#00ff88, #00ccff), тени и структура.
+
+---
+
+### Структура проекта для Render
+Чтобы обновить https://huzpai-web.onrender.com/, используй эту структуру:
+
+```
+huzpai-site/
+├── public/
+│   ├── index.html
+├── .gitignore
+├── README.md
+```
+
+1. **.gitignore**:
+   ```gitignore
+   node_modules/
+   .DS_Store
+   .env
+   ```
+
+2. **README.md**:
+   ```markdown
+   # HuzpAi Lead Page
+   Статический сайт HuzpAi с лид-магнитом, развернутый на Render.
+
+   ## Деплой на Render
+   1. Создай Static Site на render.com.
+   2. Подключи Git-репозиторий.
+   3. Укажи Publish Directory: `public`.
+   4. Деплой автоматически после пуша.
+   ```
+
+---
+
+### Обновление на Render
+Предполагаю, что https://huzpai-web.onrender.com/ уже настроен с репозиторием. Если нет, напиши, и я дам полный гайд.
+
+1. **Сохрани `index.html`**:
+   - Замени существующий `public/index.html` новым кодом.
+
+2. **Обнови репозиторий**:
+   ```bash
+   git add public/index.html
+   git commit -m "Added Contact HuzpAi Manager button"
+   git push origin main
+   ```
+
+3. **Проверь Render**:
+   - Render автоматически передеплоит сайт после пуша.
+   - Открой https://huzpai-web.onrender.com/.
+   - Убедись, что кнопка отображается после первого абзаца, стили (BIOS, мягкость) корректны, hover-эффект работает.
+
+4. **Тестирование**:
+   - Проверь:
+     - Положение кнопки (после *"системы, которые отвечают потребностям бизнеса и частных лиц."*).
+     - Стили: зеленый фон (#00ff88), голубой hover (#00ccff), тень, свечение.
+     - Адаптивность (<600px): кнопка уменьшается, но читаема.
+   - Консоль браузера (F12 → Console) на ошибки.
+   - Шрифт JetBrains Mono (через Google Fonts).
+
+5. **CRLF**:
+   - Код использует `\r\n`.
+   - Если Git меняет окончания, проверь:
+     ```bash
+     git config --global core.autocrlf false
+     ```
+     или добавь `.gitattributes`:
+     ```
+     * text eol=crlf
+     ```
+
+---
+
+### Следующий этап
+Ты указал "работаем поэтапно". Этот этап (кнопка) завершён. Что дальше?
+1. **Функционал кнопки**:
+   - Куда должна вести кнопка? Например:
+     - Telegram: `https://t.me/HuzpAiManager`.
+     - Email: `mailto:manager@huzpai.com`.
+     - Форма: всплывающая или новая страница (без Formspree).
+   - Добавить JavaScript для интерактива (например, модальное окно)?
+
+2. **Другие лид-магниты**:
+   - Добавить "Скидка 90% на обслуживание"?
+   - Добавить "Telegram-бот для учебника по ИИ"?
+   - Указать Telegram-URL или PDF для учебника?
+
+3. **Дизайн**:
+   - Усилить BIOS-стиль (например, больше свечения, анимации)?
+   - Приблизить к HuzPay (градиенты, Poppins)?
+
+4. **Render**:
+   - Нужен гайд с картинками?
+   - Проблемы с деплоем?
+
+5. **Связь с другими задачами**:
+   - HuzPay: игнорируем или интегрируем позже?
+   - Учебник n8n: отложен, но упомянуть?
+   - "Книга": это лид-страница или что-то ещё?
+
+---
+
+### Примечания
+- **Стиль**: Кнопка вписывается в HuzpAi (BIOS-вайб, мягкость) и избегает ошибок Crimson Marleen (агрессивные цвета, плоскость).
+- **Placeholder-ссылка**: Замени `href="#"` на реальную. Если не знаешь, напиши, куда вести (Telegram, email, форма).
+- **Formspree**: Исключен, как ты просил. Если нужна форма без внешних сервисов, потребуется бэкенд (например, Node.js на Render) — уточни.
+- **Render**: Обновление займет ~1 минуту после пуша.
+
+Сохрани `index.html` в `public/` и пушни в репозиторий. Проверь https://huzpai-web.onrender.com/. Напиши, что делать дальше (функционал кнопки, новые лид-магниты, доработки) или если нужна помощь с деплоем!
