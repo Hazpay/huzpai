@@ -354,7 +354,7 @@
                 ctx.stroke();
 
                 // Пульсация
-                edge.pulse += 0.2;
+                edge.pulse += 0.02;
                 if (edge.pulse > 1) edge.pulse = 0;
                 const pulseX = from.x + (to.x - from.x) * edge.pulse;
                 const pulseY = from.y + (to.y - from.y) * edge.pulse;
@@ -371,7 +371,7 @@
                 ctx.fillStyle = '#00ff88';
                 ctx.fill();
                 ctx.strokeStyle = '#00ccff';
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 0.5;
                 ctx.stroke();
             });
 
