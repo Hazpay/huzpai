@@ -1,198 +1,198 @@
-<!DOCTYPE html>\r\n
-<html lang="ru">\r\n
-<head>\r\n
-    <meta charset="UTF-8">\r\n
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n
-    <meta name="description" content="HuzpAi - ИИ-решения для бизнеса и частных лиц">\r\n
-    <meta name="keywords" content="HuzpAi, ИИ, нейронные сети, автоматизация">\r\n
-    <meta name="author" content="Grok, xAI">\r\n
-    <title>HuzpAi - Связаться с менеджером</title>\r\n
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">\r\n
-    <style>\r\n
-        * {\r\n
-            margin: 0;\r\n
-            padding: 0;\r\n
-            box-sizing: border-box;\r\n
-        }\r\n
-        body {\r\n
-            background-color: #0a0a0a;\r\n
-            color: #e0e0e0;\r\n
-            font-family: 'JetBrains Mono', monospace;\r\n
-            line-height: 1.6;\r\n
-            margin: 0;\r\n
-            padding: 20px;\r\n
-            max-width: 800px;\r\n
-            margin-left: auto;\r\n
-            margin-right: auto;\r\n
-        }\r\n
-        h1, h2, h3 {\r\n
-            color: #00ff88;\r\n
-            text-transform: uppercase;\r\n
-            letter-spacing: 2px;\r\n
-            border-bottom: 2px solid #00ff88;\r\n
-            padding-bottom: 5px;\r\n
-        }\r\n
-        h1 {\r\n
-            font-size: 1.8em;\r\n
-            text-align: center;\r\n
-        }\r\n
-        h2 {\r\n
-            font-size: 1.4em;\r\n
-            margin-top: 30px;\r\n
-        }\r\n
-        h3 {\r\n
-            font-size: 1.2em;\r\n
-            color: #00ccff;\r\n
-            border-bottom: 1px solid #00ccff;\r\n
-        }\r\n
-        p, li {\r\n
-            font-size: 1em;\r\n
-            color: #d0d0d0;\r\n
-        }\r\n
-        ul {\r\n
-            list-style: none;\r\n
-            padding-left: 20px;\r\n
-        }\r\n
-        ul li {\r\n
-            position: relative;\r\n
-            margin-bottom: 10px;\r\n
-        }\r\n
-        ul li:before {\r\n
-            content: ">>";\r\n
-            color: #ff0077;\r\n
-            position: absolute;\r\n
-            left: -20px;\r\n
-        }\r\n
-        a {\r\n
-            color: #00ff88;\r\n
-            text-decoration: none;\r\n
-        }\r\n
-        a:hover {\r\n
-            text-decoration: underline;\r\n
-        }\r\n
-        .container {\r\n
-            background: #1a1a1a;\r\n
-            padding: 20px;\r\n
-            border-radius: 10px;\r\n
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);\r\n
-        }\r\n
-        nav {\r\n
-            display: flex;\r\n
-            justify-content: center;\r\n
-            gap: 2rem;\r\n
-            padding: 1rem;\r\n
-            background: #1a1a1a;\r\n
-            margin-bottom: 2rem;\r\n
-            border-radius: 8px;\r\n
-            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);\r\n
-        }\r\n
-        nav a {\r\n
-            color: #00ff88;\r\n
-            font-weight: 700;\r\n
-            font-size: 1.1em;\r\n
-            transition: color 0.3s ease, transform 0.2s ease;\r\n
-        }\r\n
-        nav a:hover {\r\n
-            color: #00ccff;\r\n
-            transform: scale(1.05);\r\n
-            text-decoration: none;\r\n
-        }\r\n
-        .btn {\r\n
-            display: inline-block;\r\n
-            padding: 0.8rem 1.5rem;\r\n
-            background: #00ff88;\r\n
-            color: #0a0a0a;\r\n
-            font-family: 'JetBrains Mono', monospace;\r\n
-            font-weight: 700;\r\n
-            font-size: 1em;\r\n
-            border-radius: 8px;\r\n
-            text-transform: uppercase;\r\n
-            letter-spacing: 1px;\r\n
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);\r\n
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;\r\n
-            margin-top: 1rem;\r\n
-            text-decoration: none;\r\n
-        }\r\n
-        .btn:hover {\r\n
-            background: #00ccff;\r\n
-            transform: scale(1.05);\r\n
-            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);\r\n
-            text-decoration: none;\r\n
-        }\r\n
-        @media (max-width: 600px) {\r\n
-            body {\r\n
-                padding: 10px;\r\n
-            }\r\n
-            h1 {\r\n
-                font-size: 1.5em;\r\n
-            }\r\n
-            h2 {\r\n
-                font-size: 1.2em;\r\n
-            }\r\n
-            nav {\r\n
-                flex-direction: column;\r\n
-                gap: 1rem;\r\n
-            }\r\n
-            .btn {\r\n
-                padding: 0.6rem 1rem;\r\n
-                font-size: 0.9em;\r\n
-            }\r\n
-        }\r\n
-    </style>\r\n
-</head>\r\n
-<body>\r\n
-    <nav>\r\n
-        <a href="/">Главная</a>\r\n
-        <a href="#services">Услуги</a>\r\n
-        <a href="#products">Продукты</a>\r\n
-        <a href="#contact">Контакты</a>\r\n
-    </nav>\r\n
-    <div class="container">\r\n
-        <h1>HuzpAi: Решения в области искусственного интеллекта</h1>\r\n
-        <p>HuzpAi, израильская высокотехнологичная компания, специализируется на создании, интеграции и обучении передовых систем нейронных сетей. Наши решения объединяют несколько нейронных сетей в эффективные, самообучающиеся системы, которые отвечают потребностям бизнеса и частных лиц.</p>\r\n
-        <a href="#" class="btn">Contact HuzpAi Manager</a>\r\n
-        <h2 id="services">Основные услуги</h2>\r\n
-        <ul>\r\n
-            <li>Интеграция нейронных сетей: Индивидуально настроенные системы ИИ для бесшовной интеграции.</li>\r\n
-            <li>Самообучающиеся системы: Адаптируются и оптимизируются для реальных задач.</li>\r\n
-            <li>Масштабируемые решения: Подходят для бизнеса любого размера и частных пользователей.</li>\r\n
-        </ul>\r\n
-        <h2 id="products">Основные продукты</h2>\r\n
-        <h3>1. Нейронные сотрудники для бизнеса</h3>\r\n
-        <ul>\r\n
-            <li>Настройка и интеграция "нейронных сотрудников" на базе ИИ.</li>\r\n
-            <li>Модульные системы для частичной или полной интеграции.</li>\r\n
-            <li>Автономные отделы с традиционной иерархией (руководитель-менеджер-сотрудник).</li>\r\n
-            <li>Многопроектные нейронные сотрудники для выполнения задач.</li>\r\n
-        </ul>\r\n
-        <h3>2. Домашние нейронные помощники</h3>\r\n
-        <ul>\r\n
-            <li>Помощники на базе ИИ для личного использования:</li>\r\n
-            <li>Обучение и образование.</li>\r\n
-            <li>Ежедневное планирование и организация.</li>\r\n
-            <li>Интеграция с системами умного дома и безопасности.</li>\r\n
-        </ul>\r\n
-        <h3>3. Нейронная медиа-команда</h3>\r\n
-        <ul>\r\n
-            <li>Создание контента на базе ИИ для социальных сетей.</li>\r\n
-            <li>Анализ трендов и планирование контента.</li>\r\n
-            <li>Создание текстов, изображений, аудио и видео.</li>\r\n
-            <li>Автоматическая публикация и отслеживание результатов.</li>\r\n
-        </ul>\r\n
-        <h3>4. Программы обучения ИИ</h3>\r\n
-        <ul>\r\n
-            <li>Корпоративные и общие тренинги по инструментам ИИ.</li>\r\n
-            <li>Понимание принципов и применений ИИ.</li>\r\n
-            <li>Критическое мышление и развенчание мифов.</li>\r\n
-            <li>Максимизация точных результатов от ИИ.</li>\r\n
-        </ul>\r\n
-        <h2>Почему выбирают HuzpAi?</h2>\r\n
-        <ul>\r\n
-            <li>Эффективность: Настройка один раз для стабильных результатов.</li>\r\n
-            <li>Гибкость: Решения для личных и бизнес-потребностей.</li>\r\n
-            <li>Инновации: Передовые самообучающиеся системы ИИ.</li>\r\n
-        </ul>\r\n
-        <p>HuzpAi упрощает внедрение искусственного интеллекта, предоставляя мощные и удобные решения для бизнеса и частных лиц.</p>\r\n
-    </div>\r\n
-</body>\r\n
-</html>\r\n
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HuzpAi - ИИ-решения для бизнеса и частных лиц">
+    <meta name="keywords" content="HuzpAi, ИИ, нейронные сети, автоматизация">
+    <meta name="author" content="Grok, xAI">
+    <title>HuzpAi - Связаться с менеджером</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 5px;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #00ccff;
+            border-bottom: 1px solid #00ccff;
+        }
+        p, li {
+            font-size: 1em;
+            color: #d0d0d0;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        ul li {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        ul li:before {
+            content: ">>";
+            color: #ff0077;
+            position: absolute;
+            left: -20px;
+        }
+        a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: #1a1a1a;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);
+        }
+        nav a {
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            color: #00ccff;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #00ff88;
+            color: #0a0a0a;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1em;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #00ccff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <h1>HuzpAi: Artificial Intelligence Solutions</h1>
+        <p>HuzpAi, an Israeli high-tech company, specializes in creating, integrating, and training advanced neural network systems. Our solutions combine multiple neural networks into efficient, self-learning systems that meet the needs of businesses and individuals.</p>
+        <a href="#" class="btn">Contact HuzpAi Manager</a>
+        <h2 id="services">Core Services</h2>
+        <ul>
+            <li>Neural Network Integration: Custom-built AI systems for seamless integration.</li>
+            <li>Self-Learning Systems: Adapt and optimize for real-world tasks.</li>
+            <li>Scalable Solutions: Suitable for businesses of any size and individuals.</li>
+        </ul>
+        <h2 id="products">Key Products</h2>
+        <h3>1. Neural Employees for Business</h3>
+        <ul>
+            <li>Setup and integration of AI-based "neural employees."</li>
+            <li>Modular systems for partial or full integration.</li>
+            <li>Autonomous departments with traditional hierarchy (manager-supervisor-employee).</li>
+            <li>Multi-project neural employees for task execution.</li>
+        </ul>
+        <h3>2. Home Neural Assistants</h3>
+        <ul>
+            <li>AI-driven assistants for personal use:</li>
+            <li>Education and learning.</li>
+            <li>Daily planning and organization.</li>
+            <li>Integration with smart home systems and security.</li>
+        </ul>
+        <h3>3. Neural Media Team</h3>
+        <ul>
+            <li>AI-generated content creation for social media.</li>
+            <li>Trend analysis and content planning.</li>
+            <li>Generation of text, images, audio, and video.</li>
+            <li>Automated publishing and performance tracking.</li>
+        </ul>
+        <h3>4. AI Training Programs</h3>
+        <ul>
+            <li>Corporate and general AI tool training.</li>
+            <li>Understanding AI principles and applications.</li>
+            <li>Critical thinking and myth debunking.</li>
+            <li>Maximizing accurate AI outcomes.</li>
+        </ul>
+        <h2>Why Choose HuzpAi?</h2>
+        <ul>
+            <li>Efficiency: One-time setup for consistent results.</li>
+            <li>Flexibility: Solutions for personal and business needs.</li>
+            <li>Innovation: Cutting-edge self-learning AI systems.</li>
+        </ul>
+        <p>HuzpAi simplifies AI adoption, delivering powerful and user-friendly solutions for businesses and individuals.</p>
+    </div>
+</body>
+</html>
